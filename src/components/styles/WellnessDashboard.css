@@ -448,104 +448,6 @@
   min-height: 260px;
 }
 
-.status-card {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(96, 165, 250, 0.08));
-  border: 1px solid rgba(59, 130, 246, 0.18);
-  border-radius: 14px;
-  padding: 14px;
-  display: grid;
-  gap: 12px;
-}
-
-.status-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.status-head h4 {
-  margin: 4px 0 0;
-  color: #0b1220;
-}
-
-.status-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 10px;
-}
-
-.status-pill {
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-weight: 800;
-  font-size: 13px;
-  color: #0b1220;
-  background: rgba(59, 130, 246, 0.14);
-  border: 1px solid rgba(59, 130, 246, 0.28);
-}
-
-.status-pill.good {
-  background: rgba(34, 197, 94, 0.14);
-  border-color: rgba(34, 197, 94, 0.28);
-}
-.status-pill.warn {
-  background: rgba(251, 191, 36, 0.16);
-  border-color: rgba(251, 191, 36, 0.3);
-}
-.status-pill.alert {
-  background: rgba(248, 113, 113, 0.16);
-  border-color: rgba(248, 113, 113, 0.32);
-}
-
-.status-box {
-  border-radius: 12px;
-  padding: 12px;
-  border: 1px dashed rgba(59, 130, 246, 0.28);
-  background: rgba(255, 255, 255, 0.45);
-}
-
-.status-box .status-title {
-  margin: 0 0 4px;
-  color: #0b1220;
-  font-weight: 800;
-}
-
-.status-value {
-  font-size: 20px;
-  font-weight: 900;
-  color: #0b1220;
-}
-
-.status-note {
-  margin: 4px 0 8px;
-  color: #475569;
-}
-
-.status-bar {
-  width: 100%;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(148, 163, 184, 0.25);
-  overflow: hidden;
-}
-
-.status-bar span {
-  display: block;
-  height: 100%;
-  background: linear-gradient(90deg, #38bdf8, #2563eb);
-}
-
-.status-box.good .status-bar span {
-  background: linear-gradient(90deg, #22c55e, #16a34a);
-}
-.status-box.warn .status-bar span {
-  background: linear-gradient(90deg, #f59e0b, #f97316);
-}
-.status-box.alert .status-bar span {
-  background: linear-gradient(90deg, #ef4444, #dc2626);
-}
-
 .chart-head {
   display: flex;
   align-items: baseline;
@@ -612,15 +514,6 @@
 .theme-light .water-chart {
   background: #ffffff;
   border-color: rgba(59, 130, 246, 0.18);
-}
-
-.theme-light .status-card {
-  background: linear-gradient(135deg, #ffffff, #e7f0ff);
-  border-color: rgba(59, 130, 246, 0.18);
-}
-
-.theme-light .status-box {
-  background: #ffffff;
 }
 
 .theme-light .bar-track {

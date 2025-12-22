@@ -143,36 +143,6 @@ const WellnessDashboard = () => {
     return Math.min(100, Math.round((waterTotals.day / goal) * 100));
   }, [waterTotals.day, waterGoal]);
 
-  const hydrationState = useMemo(() => {
-    const pct = waterProgress;
-    if (pct >= 100) return { label: 'Đã đạt mục tiêu nước', tone: 'good', note: `${pct}% mục tiêu` };
-    if (pct >= 70) return { label: 'Gần đạt mục tiêu nước', tone: 'warn', note: `${pct}% mục tiêu, bổ sung thêm` };
-    return { label: 'Thiếu nước hôm nay', tone: 'alert', note: `${pct}% mục tiêu, hãy uống thêm` };
-  }, [waterProgress]);
-
-  const bmiState = useMemo(() => {
-    const bmi = currentBmi ? Number(currentBmi) : null;
-    const info = classifyBmi(bmi);
-    return {
-      label: info.label || 'Chưa có dữ liệu',
-      tone: bmi ? (bmi >= 18.5 && bmi < 23 ? 'good' : bmi < 25 ? 'warn' : 'alert') : 'muted',
-      bmi,
-    };
-  }, [currentBmi]);
-
-  const statusSummary = useMemo(() => {
-    if (!currentBmi && !waterTotals.day) {
-      return 'Chưa có dữ liệu. Thêm BMI hoặc log nước để xem trạng thái.';
-    }
-    if (hydrationState.tone === 'good' && bmiState.tone === 'good') {
-      return 'Mọi thứ ổn: nước đủ và BMI trong vùng khỏe mạnh.';
-    }
-    if (hydrationState.tone === 'alert' || bmiState.tone === 'alert') {
-      return 'Cần chú ý: uống thêm nước và kiểm tra lại BMI/TDEE.';
-    }
-    return 'Đang ổn, hãy hoàn thành mục tiêu nước và theo dõi BMI.';
-  }, [hydrationState, bmiState, currentBmi, waterTotals.day]);
-
   const waterSeries = useMemo(() => {
     const logs = Array.isArray(waterLogs) ? waterLogs : [];
     const todayDate = new Date(`${today}T00:00:00`);
@@ -490,36 +460,6 @@ const WellnessDashboard = () => {
                   </div>
                 );
               })}
-            </div>
-          </div>
-
-          <div className="status-card">
-            <div className="status-head">
-              <div>
-                <p className="label">Trạng thái</p>
-                <h4>{statusSummary}</h4>
-              </div>
-              <span className={`status-pill ${hydrationState.tone}`}>
-                {hydrationState.label}
-              </span>
-            </div>
-            <div className="status-grid">
-              <div className={`status-box ${hydrationState.tone}`}>
-                <p className="status-title">Nước hôm nay</p>
-                <div className="status-value">{waterTotals.day || 0} ml</div>
-                <p className="status-note">{hydrationState.note}</p>
-                <div className="status-bar">
-                  <span style={{ width: `${Math.min(100, waterProgress)}%` }} />
-                </div>
-              </div>
-              <div className={`status-box ${bmiState.tone}`}>
-                <p className="status-title">BMI</p>
-                <div className="status-value">{bmiState.bmi ?? '--'}</div>
-                <p className="status-note">{bmiState.label}</p>
-                <div className="status-bar">
-                  <span style={{ width: `${Math.min(100, ((bmiState.bmi || 22) / 35) * 100)}%` }} />
-                </div>
-              </div>
             </div>
           </div>
         </section>

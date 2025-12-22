@@ -29,6 +29,13 @@ const HomePage = ({ onLockedClick, bmiSnapshot, bmrSnapshot, hrSnapshot, statusS
   const canBmr = !!featureFlags?.bmr;
   const canHeart = !!featureFlags?.heart;
   const showActions = canDashboard && actions?.length;
+  const statusTone = (() => {
+    const text = (statusSnapshot?.note || '').toLowerCase();
+    if (text.includes('khỏe') || text.includes('ổn')) return 'good';
+    if (text.includes('lưu ý') || text.includes('tăng') || text.includes('giảm')) return 'warn';
+    if (text.includes('cảnh báo')) return 'alert';
+    return 'muted';
+  })();
 
   return (
   <div className="app-shell">
@@ -107,8 +114,18 @@ const HomePage = ({ onLockedClick, bmiSnapshot, bmrSnapshot, hrSnapshot, statusS
               </div>
               <div className="insight-card secondary">
                 <div className="insight-label">Trạng thái</div>
-                <div className="insight-value">{canDashboard ? (statusSnapshot?.value || '~') : '~'}</div>
-                <p className="insight-note">{canDashboard ? (statusSnapshot?.note || 'Chưa có dữ liệu.') : 'Chức năng đang trong quá trình phát triển.'}</p>
+                <div className={`insight-status ${statusTone}`}>
+                  <div className="status-bullet" />
+                  <div>
+                    <div className="insight-value">{canDashboard ? (statusSnapshot?.value || 'Chưa có dữ liệu') : '~'}</div>
+                    <p className="insight-note">
+                      {canDashboard ? (statusSnapshot?.note || 'Thêm log BMI hoặc nước để hiển thị trạng thái.') : 'Chức năng đang phát triển.'}
+                    </p>
+                  </div>
+                </div>
+                <div className="status-meter">
+                  <span className="fill" />
+                </div>
               </div>
             </div>
           </div>
