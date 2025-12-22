@@ -143,6 +143,27 @@ const WellnessDashboard = () => {
     return Math.min(100, Math.round((waterTotals.day / goal) * 100));
   }, [waterTotals.day, waterGoal]);
 
+  const waterSeries = useMemo(() => {
+    const logs = Array.isArray(waterLogs) ? waterLogs : [];
+    const todayDate = new Date(`${today}T00:00:00`);
+    const days = 7;
+    const series = [];
+    for (let i = days - 1; i >= 0; i -= 1) {
+      const d = new Date(todayDate);
+      d.setDate(d.getDate() - i);
+      const key = d.toISOString().slice(0, 10);
+      const total = logs
+        .filter((l) => (l.date || '') === key)
+        .reduce((s, item) => s + (Number(item.amount) || 0), 0);
+      series.push({
+        date: key,
+        label: key.slice(5).replace('-', '/'),
+        total,
+      });
+    }
+    return series;
+  }, [waterLogs, today]);
+
   const saveBmiEntry = async () => {
     const h = parseFloat(height);
     const w = parseFloat(weight);
@@ -409,6 +430,36 @@ const WellnessDashboard = () => {
                 ))}
                 {!waterLogs.length && <p className="muted">Chưa có log nước.</p>}
               </div>
+            </div>
+          </div>
+
+          <div className="water-chart">
+            <div className="chart-head">
+              <p className="label">7 ngày gần nhất</p>
+              <span className="muted">Cột so với mục tiêu {waterGoal} ml/ngày</span>
+            </div>
+            <div className="water-bars">
+              {waterSeries.map((item) => {
+                const goal = Number(waterGoal) || DEFAULT_WATER_GOAL;
+                const percent = Math.min(120, Math.round((item.total / goal) * 100));
+                const goalLine = 98; // hiển thị gần đỉnh cột
+                return (
+                  <div key={item.date} className="bar-col">
+                    <div className="bar-track">
+                      <div
+                        className="bar-fill"
+                        style={{ height: `${percent}%` }}
+                        title={`${item.total} ml`}
+                      />
+                      <div className="goal-line" style={{ bottom: `${goalLine}%` }} />
+                    </div>
+                    <div className="bar-label">
+                      <strong>{item.total} ml</strong>
+                      <span>{item.label}</span>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

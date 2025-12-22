@@ -119,130 +119,139 @@ const HeartRateCalculator = () => {
           <div className="hr-hero-icon" aria-hidden>❤️</div>
         </div>
 
-        <div className="hr-card">
-          <div className="hr-row">
-            <div className="field">
-              <label>Tuổi của bạn</label>
-              <input
-                type="number"
-                min="1"
-                max={MAX_AGE}
-                value={age}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  if (val === '') {
-                    setAge('');
-                    return;
-                  }
-                  const num = parseInt(val, 10);
-                  if (Number.isNaN(num)) return;
-                  const clamped = Math.min(MAX_AGE, Math.max(1, num));
-                  setAge(String(clamped));
-                }}
-                placeholder="Ví dụ: 30"
-                readOnly={isSelf && !!userAge}
-              />
-            </div>
-            <div className="field inline">
-              <span>Bạn đang tính chỉ số cho chính mình?</span>
-              <button
-                type="button"
-                className={`pill-toggle ${isSelf ? 'active' : 'inactive'}`}
-                onClick={() => setIsSelf((prev) => !prev)}
-              >
-                {isSelf ? 'Có' : 'Không'}
-              </button>
-            </div>
-          </div>
-
-          <div className="hr-row">
-            <div className="field">
-              <label>Giới tính của bạn</label>
-              <div className="button-row">
+        <div className="hr-main">
+          <div className="hr-card">
+            <div className="hr-row">
+              <div className="field">
+                <label>Tuổi của bạn</label>
+                <input
+                  type="number"
+                  min="1"
+                  max={MAX_AGE}
+                  value={age}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (val === '') {
+                      setAge('');
+                      return;
+                    }
+                    const num = parseInt(val, 10);
+                    if (Number.isNaN(num)) return;
+                    const clamped = Math.min(MAX_AGE, Math.max(1, num));
+                    setAge(String(clamped));
+                  }}
+                  placeholder="Ví dụ: 30"
+                  readOnly={isSelf && !!userAge}
+                />
+              </div>
+              <div className="field inline">
+                <span>Bạn đang tính chỉ số cho chính mình?</span>
                 <button
                   type="button"
-                  className={`pill ${gender === 'male' ? 'pill-active' : ''}`}
-                  onClick={() => setGender('male')}
+                  className={`pill-toggle ${isSelf ? 'active' : 'inactive'}`}
+                  onClick={() => setIsSelf((prev) => !prev)}
                 >
-                  👨 Nam
-                </button>
-                <button
-                  type="button"
-                  className={`pill ${gender === 'female' ? 'pill-active' : ''}`}
-                  onClick={() => setGender('female')}
-                >
-                  👩 Nữ
+                  {isSelf ? 'Có' : 'Không'}
                 </button>
               </div>
             </div>
-          </div>
 
-          <div className="field">
-            <label>Nhịp tim nghỉ ngơi của bạn là bao nhiêu? (bpm)</label>
-            <div className="slider-row">
-              <button
-                type="button"
-                className="slider-btn"
-                onClick={() => setResting((prev) => clamp(prev - 1, 30, 120))}
-              >
-                -
-              </button>
-              <input
-                type="range"
-                min="30"
-                max="120"
-                value={resting}
-                onChange={(e) => setResting(parseInt(e.target.value || '0', 10))}
-              />
-              <button
-                type="button"
-                className="slider-btn"
-                onClick={() => setResting((prev) => clamp(prev + 1, 30, 120))}
-              >
-                +
-              </button>
+            <div className="hr-row">
+              <div className="field">
+                <label>Giới tính của bạn</label>
+                <div className="button-row">
+                  <button
+                    type="button"
+                    className={`pill ${gender === 'male' ? 'pill-active' : ''}`}
+                    onClick={() => setGender('male')}
+                  >
+                    👨 Nam
+                  </button>
+                  <button
+                    type="button"
+                    className={`pill ${gender === 'female' ? 'pill-active' : ''}`}
+                    onClick={() => setGender('female')}
+                  >
+                    👩 Nữ
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="slider-value">{resting} bpm</div>
-            <div className="slider-helper">Làm sao để đo nhịp tim nghỉ ngơi?</div>
+
+            <div className="field">
+              <label>Nhịp tim nghỉ ngơi của bạn là bao nhiêu? (bpm)</label>
+              <div className="slider-row">
+                <button
+                  type="button"
+                  className="slider-btn"
+                  onClick={() => setResting((prev) => clamp(prev - 1, 30, 120))}
+                >
+                  -
+                </button>
+                <input
+                  type="range"
+                  min="30"
+                  max="120"
+                  value={resting}
+                  onChange={(e) => setResting(parseInt(e.target.value || '0', 10))}
+                />
+                <button
+                  type="button"
+                  className="slider-btn"
+                  onClick={() => setResting((prev) => clamp(prev + 1, 30, 120))}
+                >
+                  +
+                </button>
+              </div>
+              <div className="slider-value">{resting} bpm</div>
+              <div className="slider-helper">Làm sao để đo nhịp tim nghỉ ngơi?</div>
+            </div>
+
+            <button className="hr-submit" type="button" onClick={handleSubmit}>Tính ngay</button>
           </div>
 
-          <button className="hr-submit" type="button" onClick={handleSubmit}>Tính ngay</button>
-        </div>
-
-        {showResult && (
           <div className="hr-results">
-            <div className="hr-metrics">
-              <div className="metric">
-                <div className="metric-title">Nhịp tim tối đa ước tính</div>
-                <div className="metric-value">{maxHeartRate || '--'} bpm</div>
-                <div className="metric-note">Công thức: 220 - tuổi</div>
-              </div>
-              <div className="metric">
-                <div className="metric-title">Vùng nhịp tim lý tưởng</div>
-                <div className="metric-value">
-                  {zones ? `${zones.moderateMin}-${zones.vigorousMax} bpm` : '--'}
+            {showResult ? (
+              <>
+                <div className="hr-metrics">
+                  <div className="metric">
+                    <div className="metric-title">Nhịp tim tối đa ước tính</div>
+                    <div className="metric-value">{maxHeartRate || '--'} bpm</div>
+                    <div className="metric-note">Công thức: 220 - tuổi</div>
+                  </div>
+                  <div className="metric">
+                    <div className="metric-title">Vùng nhịp tim lý tưởng</div>
+                    <div className="metric-value">
+                      {zones ? `${zones.moderateMin}-${zones.vigorousMax} bpm` : '--'}
+                    </div>
+                    <div className="metric-note">50-85% nhịp tim tối đa</div>
+                  </div>
                 </div>
-                <div className="metric-note">50-85% nhịp tim tối đa</div>
-              </div>
-            </div>
-            {zones && (
-              <div className="zones-card">
-                <div className="zone-row">
-                  <span className="zone-dot mod" />
-                  <span className="zone-text">Vùng vận động vừa (50-70%): {zones.moderateMin}-{zones.moderateMax} bpm</span>
-                </div>
-                <div className="zone-row">
-                  <span className="zone-dot vig" />
-                  <span className="zone-text">Vùng vận động mạnh (70-85%): {zones.vigorousMin}-{zones.vigorousMax} bpm</span>
-                </div>
-                <div className="zone-row">
-                  <span className="zone-dot rest" />
-                  <span className="zone-text">Nhịp tim nghỉ của bạn: {resting} bpm</span>
-                </div>
+                {zones && (
+                  <div className="zones-card">
+                    <div className="zone-row">
+                      <span className="zone-dot mod" />
+                      <span className="zone-text">Vùng vận động vừa (50-70%): {zones.moderateMin}-{zones.moderateMax} bpm</span>
+                    </div>
+                    <div className="zone-row">
+                      <span className="zone-dot vig" />
+                      <span className="zone-text">Vùng vận động mạnh (70-85%): {zones.vigorousMin}-{zones.vigorousMax} bpm</span>
+                    </div>
+                    <div className="zone-row">
+                      <span className="zone-dot rest" />
+                      <span className="zone-text">Nhịp tim nghỉ của bạn: {resting} bpm</span>
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="hr-placeholder">
+                <div className="placeholder-title">Chưa có kết quả</div>
+                <p className="placeholder-desc">Điền tuổi, giới tính và nhịp tim nghỉ, sau đó nhấn “Tính ngay” để xem vùng nhịp tim.</p>
               </div>
             )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

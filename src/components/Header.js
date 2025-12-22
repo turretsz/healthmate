@@ -80,7 +80,9 @@ const Header = ({ featureFlags = {} }) => {
           </button>
           {user ? (
             <div className="user-chip">
-              <span className="user-avatar" aria-hidden>👤</span>
+              <Link to="/profile" className="user-avatar" aria-label="Hồ sơ" onClick={() => setMenuOpen(false)}>
+                👤
+              </Link>
               <Link to="/profile" className="user-name">{user.name}</Link>
               <button className="logout-btn" onClick={logout}>Thoát</button>
             </div>

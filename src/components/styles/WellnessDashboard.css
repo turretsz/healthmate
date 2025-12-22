@@ -138,8 +138,8 @@
 .theme-light .range-toggle button { color: var(--muted); }
 
 .bmi-row {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  display: flex;
+  flex-direction: column;
   gap: 14px;
 }
 
@@ -180,6 +180,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 10px;
+  align-items: start;
 }
 
 .bmi-inputs label {
@@ -210,17 +211,23 @@
   background: linear-gradient(135deg, #60a5fa, #3b82f6);
   color: #0b1220;
   border: none;
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 8px;
+  padding: 12px 16px;
   font-weight: 800;
   cursor: pointer;
   box-shadow: 0 12px 26px rgba(34, 211, 238, 0.22);
+  font-size: 14px;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 26px;
 }
 
 .bmi-mini {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  display: flex;
   gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
 }
 
 .mini-item {
@@ -231,6 +238,7 @@
   display: grid;
   gap: 4px;
   color: #e2e8f0;
+  scroll-snap-align: start;
 }
 
 .theme-light .mini-item {
@@ -245,12 +253,12 @@
   border-radius: 14px;
   overflow: hidden;
   background: linear-gradient(145deg, rgba(59, 130, 246, 0.08), rgba(148, 163, 184, 0.06));
-  padding: 8px;
+  padding: 12px;
 }
 
 .bmi-area svg {
   width: 100%;
-  height: 240px;
+  height: 320px;
 }
 
 .bmi-area-path {
@@ -291,6 +299,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
+  align-items: stretch;
 }
 
 .water-progress {
@@ -300,6 +309,7 @@
   padding: 14px;
   display: grid;
   gap: 12px;
+  min-height: 260px;
 }
 
 .theme-light .water-progress {
@@ -365,6 +375,8 @@
   padding: 14px;
   display: grid;
   gap: 10px;
+  min-height: 260px;
+  grid-template-rows: auto auto 1px auto auto 1fr;
 }
 
 .theme-light .water-actions {
@@ -414,9 +426,107 @@
 }
 
 .water-log-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  display: flex;
   gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
+}
+
+.water-log-list .mini-item {
+  min-width: 140px;
+  scroll-snap-align: start;
+}
+
+.water-chart {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  border-radius: 14px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  min-height: 260px;
+}
+
+.chart-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.water-bars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.bar-col {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.bar-track {
+  width: 100%;
+  height: 140px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bar-fill {
+  width: 100%;
+  background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+  transition: height 0.2s ease;
+}
+
+.goal-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(14, 165, 233, 0.9);
+  opacity: 0.8;
+}
+
+.bar-label {
+  text-align: center;
+  color: #e2e8f0;
+  display: grid;
+  gap: 2px;
+}
+
+.bar-label strong {
+  font-size: 14px;
+}
+
+.bar-label span {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.theme-light .water-chart {
+  background: #ffffff;
+  border-color: rgba(59, 130, 246, 0.18);
+}
+
+.theme-light .bar-track {
+  background: #f1f5f9;
+  border-color: rgba(59, 130, 246, 0.18);
+}
+
+.theme-light .bar-label {
+  color: var(--text);
+}
+
+.theme-light .bar-label span {
+  color: var(--muted);
 }
 
 .goal-chip {
@@ -440,7 +550,7 @@
 
 @media (max-width: 960px) {
   .bmi-row {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
   .water-grid {
     grid-template-columns: 1fr;
