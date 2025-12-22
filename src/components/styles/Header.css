@@ -306,6 +306,15 @@
   .brand-sub {
     display: none;
   }
+
+  /* Ẩn tên user khi màn hình hẹp để tiết kiệm không gian */
+  .user-chip {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+  .user-name {
+    display: none;
+  }
 }
 
 /* Simplified mobile menu: nav ẩn, bấm ☰ mới hiện */
@@ -318,24 +327,27 @@
     display: none !important;
     position: absolute;
     top: 100%;
-    left: 0;
     right: 0;
-    margin-top: 6px;
+    left: auto;
+    margin-top: 8px;
     flex-direction: column;
     gap: 8px;
-    padding: 12px;
+    padding: 12px 14px;
     border-radius: 14px;
     z-index: 12;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(231, 241, 255, 0.98));
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.12);
     opacity: 0;
-    transform: translateY(-4px);
-    transition: opacity 0.18s ease, transform 0.18s ease;
+    transform: translateY(-6px) scale(0.98);
+    transform-origin: top right;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    min-width: 220px;
+    align-items: flex-start;
   }
   .nav.open {
     display: flex !important;
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
   .nav-link {
     flex: 0 0 100%;
@@ -355,10 +367,15 @@
     background: rgba(255, 255, 255, 0.06);
     color: #0f172a;
     cursor: pointer;
+    transition: transform 0.16s ease, box-shadow 0.16s ease;
   }
   .theme-light .nav-toggle {
     border-color: var(--stroke);
     background: rgba(59, 130, 246, 0.1);
     color: var(--text);
+  }
+  .nav-toggle[aria-expanded="true"] {
+    transform: scale(0.95);
+    box-shadow: 0 8px 18px rgba(59, 130, 246, 0.25);
   }
 }

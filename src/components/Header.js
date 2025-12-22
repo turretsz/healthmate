@@ -74,6 +74,7 @@ const Header = ({ featureFlags = {} }) => {
             type="button"
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Mở menu"
+            aria-expanded={menuOpen}
           >
             ☰
           </button>

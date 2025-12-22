@@ -39,17 +39,6 @@ const ToolSection = () => {
           </div>
         ))}
       </div>
-
-      <div className="callout">
-        <div>
-          <div className="callout-title">Luồng nhắc nhở nền</div>
-          <p className="callout-desc">
-            Bật thông báo uống nước, giờ ngủ, giờ vận động và ghi chú dinh dưỡng ngay trên trang chính.
-            Tất cả được ghim vào bảng điều khiển, không cần mở thêm tab.
-          </p>
-        </div>
-        <button type="button" className="callout-btn">Bật nhắc nền</button>
-      </div>
     </div>
   );
 };
