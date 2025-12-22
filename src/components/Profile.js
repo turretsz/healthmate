@@ -14,7 +14,7 @@ const isWeakPassword = (value) => {
   return !(hasMinLength && hasLetter && hasNumber) || containsBanned;
 };
 
-const Profile = ({ featureFlags = {}, onToggleFeature }) => {
+const Profile = () => {
   const navigate = useNavigate();
   const {
     user,
@@ -251,22 +251,6 @@ const Profile = ({ featureFlags = {}, onToggleFeature }) => {
             <button onClick={handleChangePassword} disabled={saving}>Đổi mật khẩu</button>
           </div>
 
-          {user.role === 'admin' && (
-            <div className="pane">
-              <h3>Quyền mở khóa tính năng (Admin)</h3>
-              <p className="sub">Bật/tắt để cho phép tất cả tài khoản sử dụng.</p>
-              {['dashboard', 'bmr', 'heart'].map((key) => (
-                <label key={key} className="feature-toggle">
-                  <input
-                    type="checkbox"
-                    checked={!!featureFlags[key]}
-                    onChange={(e) => onToggleFeature?.(key, e.target.checked)}
-                  />
-                  <span>{key === 'dashboard' ? 'Nhật ký / Dashboard' : key === 'bmr' ? 'BMR & TDEE' : 'Nhịp tim'}</span>
-                </label>
-              ))}
-            </div>
-          )}
         </div>
 
         {user.role === 'admin' && (

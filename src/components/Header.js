@@ -37,15 +37,6 @@ const Header = ({ theme = 'dark', toggleTheme, featureFlags = {} }) => {
           </div>
         </Link>
 
-        <button
-          className="nav-toggle"
-          type="button"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Mở menu"
-        >
-          ☰
-        </button>
-
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>
           {links.map((item) => {
             const isActive = pathname === item.to;
@@ -78,6 +69,14 @@ const Header = ({ theme = 'dark', toggleTheme, featureFlags = {} }) => {
         </nav>
 
         <div className="header-actions">
+          <button
+            className="nav-toggle"
+            type="button"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Mở menu"
+          >
+            ☰
+          </button>
           <button
             className="theme-toggle"
             type="button"
