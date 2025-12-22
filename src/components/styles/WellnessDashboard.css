@@ -1,0 +1,451 @@
+.journal-page {
+  padding: 32px 0 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.journal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #6ee7b7;
+}
+
+.journal-head h1 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 32px;
+}
+
+.journal-head .subhead {
+  margin: 8px 0 0;
+  color: #cbd5e1;
+  max-width: 720px;
+  line-height: 1.55;
+}
+
+.today-chip {
+  min-width: 170px;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 10px 12px;
+  text-align: right;
+  background: linear-gradient(145deg, rgba(148, 163, 184, 0.15), rgba(255, 255, 255, 0.03));
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.today-chip span {
+  display: block;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.today-chip strong {
+  color: #e2e8f0;
+  font-size: 16px;
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.panel {
+  background: #0b1220;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 18px;
+  display: grid;
+  gap: 14px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+}
+
+.theme-light .journal-head h1 { color: var(--text); }
+.theme-light .journal-head .subhead { color: var(--muted); }
+.theme-light .today-chip {
+  background: linear-gradient(145deg, #ddecff, #ffffff);
+  border-color: rgba(59, 130, 246, 0.28);
+  box-shadow: 0 14px 28px rgba(59, 130, 246, 0.12);
+}
+.theme-light .today-chip span { color: var(--muted); }
+.theme-light .today-chip strong { color: var(--text); }
+.theme-light .panel {
+  background: #f8fbff;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 16px 32px rgba(59, 130, 246, 0.1);
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.panel .label {
+  color: #cbd5e1;
+  margin: 0 0 4px;
+  font-size: 13px;
+  letter-spacing: 0.1px;
+}
+
+.theme-light .panel .label { color: var(--muted); }
+
+.panel h3 {
+  margin: 0;
+  color: #f8fafc;
+}
+
+.theme-light .panel h3 { color: var(--text); }
+
+.range-toggle {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.theme-light .range-toggle {
+  background: #e8f1ff;
+  border-color: rgba(59, 130, 246, 0.28);
+}
+
+.range-toggle button {
+  border: none;
+  background: transparent;
+  color: #cbd5e1;
+  padding: 8px 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.range-toggle button.active {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  color: #0b1220;
+}
+
+.theme-light .range-toggle button { color: var(--muted); }
+
+.bmi-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 14px;
+}
+
+.bmi-hero {
+  background: linear-gradient(145deg, rgba(96, 165, 250, 0.2), rgba(59, 130, 246, 0.12));
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  border-radius: 14px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.theme-light .bmi-hero {
+  background: linear-gradient(145deg, #ffffff, #e5f1ff);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.bmi-value {
+  font-size: 40px;
+  font-weight: 900;
+  color: #f8fafc;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-badge {
+  color: #0b1220;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+.theme-light .bmi-value { color: var(--text); }
+
+.bmi-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.bmi-inputs label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #e2e8f0;
+  font-weight: 700;
+}
+
+.theme-light .bmi-inputs label { color: var(--text); }
+
+.bmi-inputs input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #f8fafc;
+}
+
+.theme-light .bmi-inputs input {
+  background: #ffffff;
+  border: 1px solid rgba(59, 130, 246, 0.22);
+  color: var(--text);
+}
+
+.bmi-inputs button {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  color: #0b1220;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(34, 211, 238, 0.22);
+}
+
+.bmi-mini {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.mini-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  gap: 4px;
+  color: #e2e8f0;
+}
+
+.theme-light .mini-item {
+  background: #ffffff;
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  color: var(--text);
+}
+
+.bmi-area {
+  width: 100%;
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(59, 130, 246, 0.08), rgba(148, 163, 184, 0.06));
+  padding: 8px;
+}
+
+.bmi-area svg {
+  width: 100%;
+  height: 240px;
+}
+
+.bmi-area-path {
+  transition: all 0.2s ease;
+  filter: drop-shadow(0 12px 18px rgba(34, 211, 238, 0.18));
+}
+
+.bmi-area-value {
+  fill: #e2e8f0;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.bmi-area-label {
+  fill: #94a3b8;
+  font-size: 11px;
+  transform: translateY(6px);
+}
+
+.bmi-grid-line {
+  stroke: rgba(148, 163, 184, 0.25);
+  stroke-width: 1;
+}
+
+.bmi-grid-label {
+  fill: rgba(148, 163, 184, 0.85);
+  font-size: 10px;
+}
+
+.theme-light .bmi-area {
+  background: linear-gradient(145deg, #ffffff, #e7f0ff);
+  border-color: rgba(59, 130, 246, 0.18);
+}
+.theme-light .bmi-area-value { fill: var(--text); }
+.theme-light .bmi-area-label { fill: var(--muted); }
+
+.water-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.water-progress {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.18), rgba(191, 219, 254, 0.22));
+  border: 1px solid rgba(96, 165, 250, 0.28);
+  border-radius: 14px;
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.theme-light .water-progress {
+  background: linear-gradient(145deg, #ffffff, #e0f2fe);
+  border-color: rgba(59, 130, 246, 0.18);
+}
+
+.progress-wrap {
+  display: grid;
+  gap: 6px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+}
+
+.theme-light .progress-bar {
+  background: #e2e8f0;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.progress-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #e2e8f0;
+}
+
+.theme-light .progress-meta { color: var(--text); }
+
+.water-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.water-stats div {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.theme-light .water-stats div {
+  background: #ffffff;
+  border: 1px solid rgba(59, 130, 246, 0.18);
+}
+
+.water-actions {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  border-radius: 14px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.theme-light .water-actions {
+  background: #ffffff;
+  border-color: rgba(59, 130, 246, 0.18);
+}
+
+.water-actions label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #e2e8f0;
+  font-weight: 700;
+}
+
+.water-actions input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 10px;
+  padding: 10px;
+  color: #f8fafc;
+}
+
+.theme-light .water-actions label { color: var(--text); }
+
+.theme-light .water-actions input {
+  background: #ffffff;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: var(--text);
+}
+
+.water-actions button {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  color: #0b1220;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(34, 211, 238, 0.22);
+}
+
+.divider {
+  height: 1px;
+  background: rgba(148, 163, 184, 0.28);
+  margin: 4px 0;
+}
+
+.water-log-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+}
+
+.goal-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  padding: 8px 12px;
+  border-radius: 12px;
+  text-align: right;
+  color: #e2e8f0;
+}
+
+.goal-chip span {
+  display: block;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.goal-chip strong {
+  font-size: 16px;
+}
+
+@media (max-width: 960px) {
+  .bmi-row {
+    grid-template-columns: 1fr;
+  }
+  .water-grid {
+    grid-template-columns: 1fr;
+  }
+  .journal-head {
+    flex-direction: column;
+  }
+}

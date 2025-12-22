@@ -1,0 +1,332 @@
+/* src/components/styles/HeartRateCalculator.css */
+:root {
+  --hr-surface: #0f1726;
+  --hr-panel: #111c2d;
+  --hr-border: #1f2a3a;
+  --hr-text: #f4f7fd;
+  --hr-muted: #9ca3af;
+  --hr-accent: #7fe6c4;
+  --hr-amber: #f7c768;
+}
+
+.theme-light {
+  --hr-surface: var(--panel);
+  --hr-panel: var(--surface);
+  --hr-border: var(--stroke);
+  --hr-text: var(--text);
+  --hr-muted: var(--muted);
+  --hr-accent: var(--accent);
+  --hr-amber: var(--highlight);
+}
+.hr-page {
+  background: transparent;
+  padding: 32px 20px 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.hr-layout {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.hr-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--hr-muted);
+}
+
+.hr-hero {
+  background: linear-gradient(135deg, rgba(127, 230, 196, 0.14), rgba(15, 23, 38, 0.94));
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+}
+
+.theme-light .hr-hero {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), #ffffff);
+  border-color: rgba(59, 130, 246, 0.18);
+  box-shadow: 0 18px 44px rgba(30, 64, 175, 0.12);
+}
+
+.hr-hero h1 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  color: var(--hr-text);
+}
+
+.hr-hero p {
+  margin: 0 0 8px;
+  color: var(--hr-muted);
+  line-height: 1.6;
+}
+
+.hr-meta {
+  color: var(--hr-muted);
+  font-size: 14px;
+}
+
+.hr-hero-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+  color: var(--hr-accent);
+}
+
+.hr-card {
+  background: var(--hr-panel);
+  border: 1px solid var(--hr-border);
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hr-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label,
+.field span {
+  font-weight: 700;
+  color: var(--hr-text);
+}
+
+.field.inline {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.field input[type="date"] {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--hr-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--hr-text);
+}
+
+.field input[type="date"]:focus {
+  outline: 2px solid rgba(127, 230, 196, 0.25);
+  border-color: rgba(127, 230, 196, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.pill-toggle {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--hr-muted);
+  border-radius: 999px;
+  padding: 8px 12px;
+  border: 1px solid var(--hr-border);
+  font-weight: 700;
+}
+
+.pill-toggle.active {
+  background: rgba(127, 230, 196, 0.16);
+  color: var(--hr-text);
+  border-color: rgba(127, 230, 196, 0.4);
+}
+
+.pill-toggle.inactive {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--hr-muted);
+  border-color: var(--hr-border);
+}
+
+.theme-light .pill-toggle.inactive {
+  background: var(--surface);
+  color: var(--muted);
+  border-color: var(--stroke);
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hr-card .pill {
+  border: 1px solid var(--hr-border);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--hr-text);
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.12s ease;
+}
+
+.hr-card .pill-active {
+  border-color: rgba(127, 230, 196, 0.4);
+  background: rgba(127, 230, 196, 0.12);
+  color: var(--hr-accent);
+  box-shadow: 0 10px 18px rgba(127, 230, 196, 0.16);
+}
+
+.theme-light .hr-card .pill {
+  background: var(--surface);
+  border-color: var(--stroke);
+  color: var(--text);
+}
+
+.theme-light .hr-card .pill-active {
+  background: rgba(59, 130, 246, 0.16);
+  border-color: rgba(59, 130, 246, 0.32);
+  color: var(--accent-strong);
+  box-shadow: 0 10px 18px rgba(30, 64, 175, 0.12);
+}
+
+.slider-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.slider-btn {
+  border: 1px solid var(--hr-border);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 800;
+  color: var(--hr-text);
+}
+
+.slider-row input[type="range"] {
+  width: 100%;
+  accent-color: var(--hr-accent);
+}
+
+.slider-value {
+  font-weight: 800;
+  color: var(--hr-text);
+}
+
+.slider-helper {
+  color: var(--hr-muted);
+  font-size: 14px;
+}
+
+.hr-submit {
+  background: linear-gradient(135deg, #7fe6c4, #f7c768);
+  color: #04131f;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(127, 230, 196, 0.3);
+}
+
+.theme-light .hr-submit {
+  background: linear-gradient(135deg, var(--accent), var(--highlight));
+  color: #0b1f3d;
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.18);
+}
+
+.hr-results {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hr-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.metric {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--hr-border);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.metric-title {
+  font-weight: 800;
+  color: var(--hr-text);
+}
+
+.metric-value {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 6px 0;
+  color: var(--hr-text);
+}
+
+.metric-note {
+  color: var(--hr-muted);
+  font-size: 14px;
+}
+
+.zones-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--hr-border);
+  border-radius: 12px;
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.zone-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.zone-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.zone-dot.mod {
+  background: #22c55e;
+}
+
+.zone-dot.vig {
+  background: #f97316;
+}
+
+.zone-dot.rest {
+  background: #7fe6c4;
+}
+
+.zone-text {
+  color: var(--hr-text);
+}
+
+@media (max-width: 640px) {
+  .hr-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

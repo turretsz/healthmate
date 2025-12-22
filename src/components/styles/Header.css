@@ -1,0 +1,327 @@
+/* src/components/styles/Header.css */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(12px);
+}
+
+.glass-bar {
+  background: linear-gradient(180deg, rgba(10, 16, 24, 0.9), rgba(10, 16, 24, 0.84));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.34);
+}
+
+.theme-light .glass-bar {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(228, 239, 255, 0.92));
+  border-bottom: 1px solid var(--stroke);
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.1);
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 0;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #e2e8f0;
+  text-decoration: none;
+}
+
+.logo-link:visited,
+.logo-link:hover,
+.logo-link:active {
+  text-decoration: none;
+}
+
+.theme-light .logo-link {
+  color: var(--text);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #1d4ed8, #38bdf8);
+  color: #0b1f3d;
+  border-radius: 14px;
+  font-size: 16px;
+  box-shadow: 0 12px 32px rgba(127, 230, 196, 0.3);
+  font-weight: 800;
+}
+
+.theme-light .logo-icon {
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  box-shadow: 0 10px 26px rgba(59, 130, 246, 0.2);
+}
+
+.logo-text {
+  display: grid;
+  gap: 4px;
+}
+
+.brand-name {
+  font-size: 18px;
+  color: #f4f7fd;
+}
+
+.brand-sub {
+  font-size: 12px;
+  color: #9ca3af;
+  letter-spacing: 0.2px;
+}
+
+.theme-light .brand-name {
+  color: var(--text);
+}
+
+.theme-light .brand-sub {
+  color: var(--muted);
+}
+
+.nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 10px;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+.theme-light .nav {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(231, 241, 255, 0.94));
+  border-color: var(--stroke);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
+}
+
+.nav-link {
+  padding: 9px 14px;
+  border-radius: 12px;
+  color: #cfd6e6;
+  font-weight: 800;
+  border: 1px solid transparent;
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  flex: 0 0 auto;
+}
+
+.nav-link:visited {
+  color: #cfd6e6;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  background: rgba(127, 230, 196, 0.16);
+  border-color: rgba(127, 230, 196, 0.35);
+  color: #7fe6c4;
+}
+
+.theme-light .nav-link {
+  color: var(--text);
+}
+
+.theme-light .nav-link.active,
+.theme-light .nav-link:hover {
+  color: var(--accent-strong);
+  border-color: rgba(14, 165, 233, 0.28);
+  background: rgba(14, 165, 233, 0.12);
+}
+
+.nav-link.locked {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.nav-link.locked:hover {
+  background: none;
+  border-color: transparent;
+  color: inherit;
+}
+
+.header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f4f7fd;
+  border-radius: 999px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.theme-light .theme-toggle {
+  background: linear-gradient(135deg, #ffffff, #e9f2ff);
+  border-color: var(--stroke);
+  color: var(--text);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+}
+
+.theme-light .login-button {
+  background: linear-gradient(135deg, var(--accent), var(--highlight));
+  box-shadow: 0 12px 26px rgba(14, 165, 233, 0.22);
+  color: #0f172a;
+}
+
+.login-button {
+  background: linear-gradient(135deg, #7fe6c4, #f7c768);
+  color: #04131f;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(127, 230, 196, 0.26);
+}
+
+.user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #e2e8f0;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
+}
+
+.theme-light .user-chip {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.14), rgba(226, 239, 255, 0.94));
+  border-color: var(--stroke);
+  color: var(--muted);
+  box-shadow: 0 12px 26px rgba(30, 64, 175, 0.12);
+}
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  background: #60a5fa;
+  border-radius: 50%;
+}
+
+.theme-light .user-avatar {
+  background: #60a5fa;
+}
+
+.logout-btn {
+  background: transparent;
+  border: none;
+  color: #7fe6c4;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.theme-light .logout-btn {
+  color: var(--accent);
+}
+
+.user-name {
+  text-decoration: none;
+}
+
+.theme-light .user-name {
+  color: var(--muted);
+}
+
+.user-name:hover,
+.user-name:focus,
+.user-name:active {
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .header-inner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+
+  .nav {
+    gap: 8px;
+    padding: 6px 8px;
+  }
+
+  .nav-link {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 4px 0;
+  }
+
+  .header-inner {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-actions {
+    justify-self: end;
+    width: auto;
+    gap: 8px;
+  }
+
+  .theme-toggle {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+
+  .login-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    box-shadow: 0 10px 18px rgba(127, 230, 196, 0.22);
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .logo-text {
+    gap: 2px;
+  }
+
+  .brand-name {
+    font-size: 16px;
+  }
+
+  .brand-sub {
+    display: none;
+  }
+}

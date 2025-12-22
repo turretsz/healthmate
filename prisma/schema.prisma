@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  gender    String?
+  birthDate String?
+  plan      String    @default("Free")
+  role      String    @default("user")
+  bmiLogs   BmiLog[]
+  waterLogs WaterLog[]
+  waterGoal WaterGoal?
+}
+
+model BmiLog {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  bmi        Float
+  height     Float
+  weight     Float
+  gender     String?
+  age        Int?
+  recordedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model WaterLog {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  amount     Int
+  time       String
+  date       String
+  recordedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model WaterGoal {
+  userId Int  @id
+  goal   Int  @default(2000)
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

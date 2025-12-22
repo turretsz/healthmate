@@ -1,0 +1,24 @@
+/* src/components/Logo.css */
+
+/* Cấu hình cho toàn bộ logo */
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: 'Arial', sans-serif; /* Font chữ dễ đọc */
+  font-weight: bold;
+}
+
+/* Phần biểu tượng (chữ 'H') */
+.logo-icon {
+  font-size: 40px;
+  color: #3b82f6; /* Màu xanh dương giống HelloBacsi */
+  margin-right: 8px; /* Khoảng cách giữa biểu tượng và chữ */
+  font-weight: 900;
+}
+
+/* Phần chữ 'HealthMate' */
+.logo-text {
+  font-size: 24px;
+  color: #1e3a8a; /* Màu xanh dương đậm */
+  letter-spacing: 2px; /* Khoảng cách giữa các chữ để chữ rõ ràng hơn */
+}
