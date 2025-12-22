@@ -102,15 +102,12 @@ const AuthModal = () => {
       <div className="auth-shell">
         <div className="auth-hero">
           <div className="auth-badge">HealthMate</div>
-          <h3>Đăng nhập để đồng bộ sức khỏe mỗi ngày</h3>
-          <p>
-            Một tài khoản cho tất cả: theo dõi chỉ số, tính BMR, đo nhịp tim và nhắc bạn uống nước
-            đúng giờ.
-          </p>
+          <h3>Đăng nhập để dùng đầy đủ tính năng</h3>
+          <p>Giữ lại lịch sử BMI, BMR, nhịp tim và nước uống. Đồng bộ để xem lại ở mọi thiết bị.</p>
           <ul className="auth-list">
-            <li>• Bảo vệ dữ liệu cá nhân bằng mã hóa</li>
-            <li>• Tối ưu cho cả di động và desktop</li>
-            <li>• Hỗ trợ đăng nhập nhanh với mạng xã hội</li>
+            <li>• Đăng nhập nhanh, bảo vệ thông tin cá nhân</li>
+            <li>• Gọn trên điện thoại và máy tính</li>
+            <li>• Có nhắc uống nước và theo dõi chỉ số cơ bản</li>
           </ul>
           <div className="auth-hero-meta">
             <div>
