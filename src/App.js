@@ -17,7 +17,7 @@ import Profile from './components/Profile';
 import { useAuth } from './context/AuthContext';
 
 const FEATURE_KEY = 'hm_feature_flags';
-const defaultFeatures = { dashboard: false, bmr: false, heart: false };
+const defaultFeatures = { dashboard: true, bmr: true, heart: true };
 const defaultActionSuggestions = [
   { name: 'Uống nước', note: 'Bổ sung 300ml nước sau khi thức dậy.', delta: '+300ml' },
   { name: 'Vận động', note: 'Đi bộ nhanh 10 phút sau bữa trưa.', delta: '+10 phút' },
@@ -251,7 +251,7 @@ const LockedFeature = ({ label }) => (
 function AppShell() {
   const { notify } = useToast();
   const { user } = useAuth();
-  const [theme, setTheme] = useState(() => localStorage.getItem('hm_theme') || 'dark');
+  const [theme, setTheme] = useState(() => localStorage.getItem('hm_theme') || 'light');
   const { pathname } = useLocation();
   const [isRouting, setIsRouting] = useState(false);
   const [isBusy, setIsBusy] = useState(false);

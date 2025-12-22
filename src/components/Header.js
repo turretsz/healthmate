@@ -1,5 +1,5 @@
 // src/components/Header.js
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
@@ -9,10 +9,20 @@ const Header = ({ theme = 'dark', toggleTheme, featureFlags = {} }) => {
   const { user, openAuth, logout } = useAuth();
   const { notify } = useToast();
   const { pathname } = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
   const handleLocked = (e) => {
     e.preventDefault();
     notify('Chức năng đang trong quá trình phát triển, vui lòng quay lại sau.', { type: 'info' });
   };
+
+  const links = [
+    { to: '/', label: 'Trang chủ', locked: false },
+    { to: '/health-tracker', label: 'BMI', locked: false },
+    { to: '/profile', label: 'Hồ sơ', locked: false },
+    { to: '/dashboard', label: 'Nhật ký', locked: !featureFlags.dashboard },
+    { to: '/bmr', label: 'BMR & TDEE', locked: !featureFlags.bmr },
+    { to: '/heart-rate', label: 'Nhịp tim', locked: !featureFlags.heart },
+  ];
 
   return (
     <header className="header glass-bar">
@@ -27,34 +37,41 @@ const Header = ({ theme = 'dark', toggleTheme, featureFlags = {} }) => {
           </div>
         </Link>
 
-        <nav className="nav">
-          {[
-            { to: '/', label: 'Trang chủ', locked: false },
-            { to: '/health-tracker', label: 'BMI', locked: false },
-            { to: '/profile', label: 'Hồ sơ', locked: false },
-            { to: '/dashboard', label: 'Nhật ký', locked: !featureFlags.dashboard },
-            { to: '/bmr', label: 'BMR & TDEE', locked: !featureFlags.bmr },
-            { to: '/heart-rate', label: 'Nhịp tim', locked: !featureFlags.heart },
-          ].map((item) => {
+        <button
+          className="nav-toggle"
+          type="button"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Mở menu"
+        >
+          ☰
+        </button>
+
+        <nav className={`nav ${menuOpen ? 'open' : ''}`}>
+          {links.map((item) => {
             const isActive = pathname === item.to;
             const classes = `nav-link ${isActive ? 'active' : ''} ${item.locked ? 'locked' : ''}`;
-            return item.locked ? (
-              <a
-                key={item.to}
-                href={item.to}
-                className={classes}
-                onClick={handleLocked}
-                aria-disabled="true"
-              >
-                {item.label}
-              </a>
-            ) : (
+            const content = item.label;
+            if (item.locked) {
+              return (
+                <a
+                  key={item.to}
+                  href={item.to}
+                  className={classes}
+                  onClick={handleLocked}
+                  aria-disabled="true"
+                >
+                  {content}
+                </a>
+              );
+            }
+            return (
               <Link
                 key={item.to}
                 to={item.to}
                 className={classes}
+                onClick={() => setMenuOpen(false)}
               >
-                {item.label}
+                {content}
               </Link>
             );
           })}
