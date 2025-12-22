@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import './styles/Header.css';
 
-const Header = ({ theme = 'dark', toggleTheme, featureFlags = {} }) => {
+const Header = ({ featureFlags = {} }) => {
   const { user, openAuth, logout } = useAuth();
   const { notify } = useToast();
   const { pathname } = useLocation();
@@ -76,14 +76,6 @@ const Header = ({ theme = 'dark', toggleTheme, featureFlags = {} }) => {
             aria-label="Mở menu"
           >
             ☰
-          </button>
-          <button
-            className="theme-toggle"
-            type="button"
-            onClick={toggleTheme}
-            aria-label="Đổi giao diện"
-          >
-            {theme === 'dark' ? '🌙' : '☀️'}
           </button>
           {user ? (
             <div className="user-chip">

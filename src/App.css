@@ -25,13 +25,13 @@
 }
 
 .hero-shell::before {
-  background: rgba(127, 230, 196, 0.3);
+  background: rgba(59, 130, 246, 0.28);
   top: -160px;
   left: -120px;
 }
 
 .hero-shell::after {
-  background: rgba(247, 199, 104, 0.26);
+  background: rgba(96, 165, 250, 0.22);
   bottom: -220px;
   right: -140px;
 }
@@ -55,7 +55,7 @@
   position: relative;
   padding: 26px;
   border-radius: 26px;
-  background: linear-gradient(145deg, #111a2a, #0e1421 55%, #0f1c26);
+  background: linear-gradient(145deg, #0b1628, #0c1b2f 55%, #0d223a);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: var(--shadow-1), var(--glow);
   display: grid;
@@ -81,8 +81,8 @@
   inset: 0;
   background:
     radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.08), transparent 32%),
-    radial-gradient(circle at 72% 0%, rgba(127, 230, 196, 0.14), transparent 34%),
-    radial-gradient(circle at 92% 72%, rgba(247, 199, 104, 0.14), transparent 24%);
+    radial-gradient(circle at 72% 0%, rgba(59, 130, 246, 0.18), transparent 34%),
+    radial-gradient(circle at 92% 72%, rgba(14, 165, 233, 0.16), transparent 24%);
   pointer-events: none;
 }
 

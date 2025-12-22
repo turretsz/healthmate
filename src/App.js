@@ -251,7 +251,6 @@ const LockedFeature = ({ label }) => (
 function AppShell() {
   const { notify } = useToast();
   const { user } = useAuth();
-  const [theme, setTheme] = useState(() => localStorage.getItem('hm_theme') || 'light');
   const { pathname } = useLocation();
   const [isRouting, setIsRouting] = useState(false);
   const [isBusy, setIsBusy] = useState(false);
@@ -276,14 +275,6 @@ function AppShell() {
     e.preventDefault();
     notify('Chức năng đang trong quá trình phát triển, vui lòng quay lại sau.', { type: 'info' });
   }, [notify]);
-
-  const handleFeatureToggle = useCallback((key, value) => {
-    setFeatureFlags((prev) => {
-      const next = { ...prev, [key]: value };
-      localStorage.setItem(FEATURE_KEY, JSON.stringify(next));
-      return next;
-    });
-  }, []);
 
   const classifyBmi = useCallback((value) => {
     const bmiNum = parseFloat(value);
@@ -412,15 +403,9 @@ function AppShell() {
     };
   }, [loadSnapshots]);
 
-  useEffect(() => {
-    localStorage.setItem('hm_theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-
   return (
-    <div className={`font-sans theme-${theme}`}>
-      <Header theme={theme} toggleTheme={toggleTheme} featureFlags={featureFlags} />
+    <div className="font-sans theme-light">
+      <Header featureFlags={featureFlags} />
       <div className="page-transition">
         <Routes>
           <Route
@@ -444,7 +429,7 @@ function AppShell() {
           <Route path="/health-tracker" element={<HealthTracker />} />
           <Route path="/bmr" element={featureFlags.bmr ? <BMRCalculator /> : <LockedFeature label="BMR & TDEE" />} />
           <Route path="/heart-rate" element={featureFlags.heart ? <HeartRateCalculator /> : <LockedFeature label="Nhịp tim" />} />
-          <Route path="/profile" element={<Profile featureFlags={featureFlags} onToggleFeature={handleFeatureToggle} />} />
+          <Route path="/profile" element={<Profile />} />
           <Route
             path="*"
             element={(
