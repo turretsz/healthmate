@@ -2,7 +2,6 @@
   "name": "health-mate",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://turretsz.github.io/health-mate",
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.17",
     "@testing-library/dom": "^10.4.1",
