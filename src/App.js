@@ -340,6 +340,12 @@ function AppShell() {
       const actionsList = Array.isArray(actionsMap[user.id]) ? actionsMap[user.id].slice(0, 3) : [];
 
       const bmiMeta = latestBmi ? classifyBmi(latestBmi.bmi) : null;
+      const derivedStatus = bmiMeta
+        ? {
+            value: bmiMeta.label,
+            note: bmiMeta.note || 'Theo dõi thêm BMI và nước uống để hoàn thiện trạng thái.',
+          }
+        : null;
 
       setSnapshots({
         bmi: latestBmi
@@ -366,7 +372,7 @@ function AppShell() {
               value: statusSnap.label || 'On track',
               note: statusSnap.note || 'Đang đồng bộ dữ liệu.',
             }
-          : null,
+          : derivedStatus,
         actions: actionsList.length ? actionsList : defaultActionSuggestions,
       });
     } catch (err) {
