@@ -1,5 +1,7 @@
 # HealthMate – Ứng dụng Theo dõi Sức khỏe
 
+- Trang Web: [HealthMate](https://healthmate-lake.vercel.app)
+
 ## 1) Giới thiệu
 - Web app theo dõi sức khỏe (BMI, BMR/TDEE, nhịp tim, nước) với frontend React và backend Express + Prisma.
 - Hỗ trợ đăng ký/đăng nhập, cập nhật hồ sơ, lưu chỉ số và xem lịch sử theo người dùng.
